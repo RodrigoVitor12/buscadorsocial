@@ -52,10 +52,10 @@ new class extends Component {
                     // FORÇAR RESULTADOS DO BRASIL
                     'gl' => 'br',
                     'hl' => 'pt',
-                    'cr' => 'countryBR',
+                    // 'cr' => 'countryBR',
 
                     // filtro por data
-                    'tbs' => 'cdr:1,cd_min:01/01/2026,cd_max:12/31/2026',
+                    // 'tbs' => 'cdr:1,cd_min:01/01/2026,cd_max:12/31/2026',
                 ]);
 
                 if ($response->successful()) {
@@ -131,7 +131,7 @@ new class extends Component {
                 required
                 type="text"
                 wire:model="termo"
-                placeholder="Buscar grupos, páginas, perfis..."
+                placeholder="Pesquise por: Excursões, Romaria, etc. (Ex: Excursão para Maria da fe)"
                 class="w-full pl-4 pr-28 py-4 rounded-xl bg-[#1B1D22] border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
 
@@ -169,6 +169,10 @@ new class extends Component {
             class="px-4 py-2 rounded-lg border cursor-pointer hover:bg-gray-700 {{ $rede === 'instagram' ? 'bg-yellow-500 text-black' : 'bg-[#1B1D22]' }}">
             Instagram
         </button>
+        <button wire:click="changeRede('tiktok')"
+            class="px-4 py-2 rounded-lg border cursor-pointer hover:bg-gray-700 {{ $rede === 'tiktok' ? 'bg-yellow-500 text-black' : 'bg-[#1B1D22]' }}">
+            tiktok
+        </button>
 
     </div>
 
@@ -179,7 +183,6 @@ new class extends Component {
 
     {{-- RESULTADOS --}}
     <div class="space-y-4">
-
         @forelse($results as $item)
 
             <div wire:loading.remove>
