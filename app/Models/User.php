@@ -29,6 +29,9 @@ class User extends Authenticatable
         'status',
         'last_login'
     ];
+    protected $casts = [
+        'ip_address' => 'array',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.

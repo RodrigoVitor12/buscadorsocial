@@ -63,6 +63,14 @@
                 viewable
             />
             <flux:input
+                name="ip_address"
+                label="Endereço de IP"
+                :value="old('ip_address')"
+                type="text"
+                required
+                placeholder="Ex: 192.168.0.1"
+            />
+            <flux:input
                 name="code"
                 :label="__('Código')"
                 type="password"

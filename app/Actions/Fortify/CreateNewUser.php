@@ -30,12 +30,13 @@ class CreateNewUser implements CreatesNewUsers
                 'code' => ['Código inválido.'],
             ]);
         }
+        $ips = array_map('trim', explode(',', $input['ip_address']));
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
-            'ip_address' => request()->ip(),
+            'ip_address' => $ips,
             'plano' => $input['plano']
         ]);
     }
