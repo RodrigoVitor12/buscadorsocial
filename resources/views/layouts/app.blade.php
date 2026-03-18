@@ -27,7 +27,12 @@
                     class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
                         Meus Favoritos
                     </a>
-
+                    @if (auth()->user()->role == '0')
+                        <a href="{{ route('admin') }}" 
+                        class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
+                            admin
+                        </a>
+                    @endif
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
