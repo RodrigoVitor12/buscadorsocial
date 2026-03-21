@@ -52,9 +52,9 @@ new class extends Component {
                 </button>
 
                 <!-- Edit IP -->
-                <button class="px-3 py-1 text-xs rounded-lg bg-gray-700 hover:bg-white hover:text-black transition">
-                    Alterar IP
-                </button>
+                <a href="{{ route('admin.update-info-user', $user->id) }}" class="px-3 py-1 text-xs rounded-lg bg-gray-700 hover:bg-white hover:text-black transition">
+                    Alterar Plano
+                </a>
 
                 <!-- Delete -->
                 <button

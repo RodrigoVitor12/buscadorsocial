@@ -18,6 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/alterar-dados/{id}', [AdminController::class, 'updateInfoUser'])->name('admin.update-info-user');
 });
 
 require __DIR__.'/settings.php';

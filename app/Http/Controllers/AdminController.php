@@ -17,4 +17,15 @@ class AdminController extends Controller
             'users' => $users
         ]);
     }
+
+    public function updateInfoUser($id) {
+        $user = User::find($id);
+        return view('admin.update', [
+            'user' => $user
+        ]);
+    }
+
+    public function update(Request $request) {
+        
+    }
 }
