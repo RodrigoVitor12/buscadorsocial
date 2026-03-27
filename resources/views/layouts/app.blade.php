@@ -23,6 +23,14 @@
 
                 {{-- Actions --}}
                 <div class="flex items-center gap-6 text-sm">
+                    <a href="{{ route('dashboard') }}" 
+                    class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
+                        Dashboard
+                    </a>
+                    <a href="{{ route('search') }}" 
+                    class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
+                        Pesquisar
+                    </a>
                     <a href="{{ route('favorite.index') }}" 
                     class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
                         Meus Favoritos
