@@ -25,18 +25,10 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        if ($input['code'] !== '051201') {
-            throw ValidationException::withMessages([
-                'code' => ['Código inválido.'],
-            ]);
-        }
-        $ips = array_map('trim', explode(',', $input['ip_address']));
-
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
-            'ip_address' => $ips,
             'plano' => $input['plano']
         ]);
     }

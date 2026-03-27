@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('role')->default('1'); // 0 - Admin / 1 - User
-            $table->json('ip_address');
             $table->enum('plano', ['single', 'double', 'prata', 'ouro']); // 1 - 2 - 4 - 7
-            $table->string('status')->default('ativo');
+            $table->string('status')->default('inativo');
+            $table->integer('credits')->default(100);
             $table->timestamp('last_login')->useCurrent();
             $table->rememberToken();
             $table->timestamps();

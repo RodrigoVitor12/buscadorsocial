@@ -11,7 +11,7 @@
             <!-- Name -->
             <flux:input
                 name="name"
-                :label="__('Name')"
+                :label="__('Nome da Empresa')"
                 :value="old('name')"
                 type="text"
                 required
@@ -23,7 +23,7 @@
             <!-- Email Address -->
             <flux:input
                 name="email"
-                :label="__('Email address')"
+                :label="__('Email da empresa')"
                 :value="old('email')"
                 type="email"
                 required
@@ -44,7 +44,7 @@
             <!-- Password -->
             <flux:input
                 name="password"
-                :label="__('Password')"
+                :label="__('Senha')"
                 type="password"
                 required
                 autocomplete="new-password"
@@ -55,34 +55,17 @@
             <!-- Confirm Password -->
             <flux:input
                 name="password_confirmation"
-                :label="__('Confirm password')"
+                :label="__('Confirma senha')"
                 type="password"
                 required
                 autocomplete="new-password"
                 :placeholder="__('Confirm password')"
                 viewable
             />
-            <flux:input
-                name="ip_address"
-                label="Endereço de IP"
-                :value="old('ip_address')"
-                type="text"
-                required
-                placeholder="Ex: 192.168.0.1"
-            />
-            <flux:input
-                name="code"
-                :label="__('Código')"
-                type="password"
-                required
-                autocomplete="new-password"
-                :placeholder="__('Digite o codigo')"
-                viewable
-            />
 
             <div class="flex items-center justify-end">
                 <flux:button type="submit" variant="primary" class="w-full" data-test="register-user-button">
-                    {{ __('Create account') }}
+                    {{ __('Criar conta') }}
                 </flux:button>
             </div>
         </form>
