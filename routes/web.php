@@ -3,10 +3,12 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
+Route::get('/plan/{plan}', [PlanController::class, 'select'])->name('plan.select');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/search', [SearchController::class, 'index'])->name('search');
