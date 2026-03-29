@@ -29,7 +29,7 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
-            'plano' => $input['plano']
+            'plano' => $input['plan']
         ]);
     }
 }
