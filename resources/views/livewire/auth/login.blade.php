@@ -40,13 +40,12 @@
                 <button class="w-full cursor-pointer px-8 py-3.5 rounded-xl bg-yellow-500 text-gray-900 font-medium text-sm hover:opacity-90 transition-opacity">Entrar</button>
             </div>
         </form>
-        <p class="text-[12px]">Não tem conta? <br>Entre em contato com <a href="#" class="text-blue-400 underline">Administrador</a> e Faça seu orçamento</p>
 
-        {{-- @if (Route::has('register'))
+        @if (Route::has('register'))
             <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
-                <span>{{ __('Don\'t have an account?') }}</span>
-                <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
+                <span>{{ __('Não tem uma conta?') }}</span>
+                <flux:link :href="route('register')" wire:navigate>{{ __('Criar conta') }}</flux:link>
             </div>
-        @endif --}}
+        @endif
     </div>
 </x-layouts::auth>
