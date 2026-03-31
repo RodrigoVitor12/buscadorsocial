@@ -56,7 +56,7 @@ new class extends Component {
 
     public function search()
     {
-        if (!$this->termo || !$this->states || !$this->cities) {
+        if (!$this->termo) {
             $this->results = [];
             return;
         }
@@ -129,7 +129,7 @@ new class extends Component {
     {
         $this->rede = $rede;
         $this->page = 1;
-        if ($this->termo && $this->states && $this->cities){
+        if ($this->termo){
           $this->search();  
         } 
     }
