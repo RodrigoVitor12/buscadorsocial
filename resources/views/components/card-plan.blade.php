@@ -5,7 +5,8 @@
 
             <ul class="text-sm text-gray-400 space-y-2 mb-6">
                 <li>{{$credits}} créditos</li>
-                <li>{{$daysToUse}} dias de uso</li>
+                <li>{{$daysToUse}}</li>
+                <li>Até {{$results}} resultados</li>
                 <li>R$ {{$priceForSearch}} por busca</li>
                 <li class="text-green-400">{{$benefits ? $benefits : ''}}</li>
             </ul>

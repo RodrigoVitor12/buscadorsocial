@@ -14,7 +14,8 @@ class CardPlan extends Component
     public $daysToUse;
     public $priceForSearch;
     public $benefits;
-    public function __construct($typePlan, $price, $credits, $daysToUse, $priceForSearch, $benefits = null)
+    public $results;
+    public function __construct($typePlan, $price, $credits, $daysToUse, $priceForSearch, $benefits = null, $results)
     {
         $this->typePlan = $typePlan;
         $this->price = $price;
@@ -22,6 +23,7 @@ class CardPlan extends Component
         $this->daysToUse = $daysToUse;
         $this->priceForSearch = $priceForSearch;
         $this->benefits = $benefits;
+        $this->results = $results;
     }
 
     /**

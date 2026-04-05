@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
+Route::get('/planos', [PlanController::class, 'index'])->name('plan.index');
 Route::get('/plan/{plan}', [PlanController::class, 'select'])->name('plan.select');
 
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -78,6 +78,10 @@
     
     <option value="Ouro">Ouro</option>
 
+    <option value="Semestre Max">Semestre Max</option>
+    
+    <option value="Full 12 Booster">Full 12 Booster</option>
+
 </flux:select>
 
 <!-- Senha -->

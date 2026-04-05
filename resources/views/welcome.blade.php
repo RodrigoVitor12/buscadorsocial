@@ -194,16 +194,20 @@
                 typePlan="Starter"
                 price="0"
                 credits="100"
-                daysToUse="15"
+                results="1.000"
+                daysToUse="7 dias de uso"
                 priceForSearch="0,00"
+                benefits={{null}}
             />
 
             <x-card-plan 
                 typePlan="One"
                 price="250,00"
                 credits="1.000"
-                daysToUse="30"
-                priceForSearch="0,20"
+                results="10.000"
+                daysToUse="30 dias de uso"
+                priceForSearch="0,25"
+                benefits={{null}}
             />
 
             {{-- POPULAR --}}
@@ -215,40 +219,64 @@
 
                 <x-card-plan 
                     typePlan="Two"
-                    price="400,00"
+                    price="500,00"
                     credits="2.000"
-                    daysToUse="45"
-                    priceForSearch="0,20"
+                    results="20.000"
+                    daysToUse="45 dias de uso"
+                    priceForSearch="0,25"
                     benefits="20% economia"
                 />
 
             </div>
 
             <x-card-plan 
-                typePlan="Prata"
-                price="600,00"
-                credits="3.000"
-                daysToUse="60"
-                priceForSearch="0,20"
-                benefits="20% economia"
-            />
-
-            <x-card-plan 
                 typePlan="Bronze"
-                price="700,00"
-                credits="4.000"
-                daysToUse="90"
-                priceForSearch="0,175"
+                price="600,00"
+                credits="2.500"
+                results="25.000"
+                daysToUse="60 dias de uso"
+                priceForSearch="0,24"
                 benefits="30% economia"
             />
 
             <x-card-plan 
-                typePlan="Ouro"
+                typePlan="Prata"
                 price="800,00"
+                credits="3.500"
+                results="35.000"
+                daysToUse="90 dias de uso"
+                priceForSearch="0,22"
+                benefits="40% economia"
+            />
+
+            
+
+            <x-card-plan 
+                typePlan="Ouro"
+                price="990,00"
                 credits="5.000"
-                daysToUse="120"
+                results="50.000"
+                daysToUse="120 dias de uso"
+                priceForSearch="0,19"
+                benefits="28% economia"
+            />
+            <x-card-plan 
+                typePlan="Semestre Max"
+                price="1.250,00"
+                credits="7.000"
+                results="70.000"
+                daysToUse="6 meses de uso"
+                priceForSearch="0,17"
+                benefits="70% economia"
+            />
+            <x-card-plan 
+                typePlan="Full 12 Booster"
+                price="1500,00"
+                credits="9.000"
+                results="90.000"
+                daysToUse="6 meses de uso"
                 priceForSearch="0,16"
-                benefits="36% economia"
+                benefits="80% economia"
             />
 
         </div>
