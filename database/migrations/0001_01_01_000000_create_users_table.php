@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('status')->default('ativo');
             $table->string('payment_status')->default('pendente');
             $table->integer('credits')->default(100);
+            $table->integer('credits_used')->default(0);
             $table->timestamp('last_login')->useCurrent();
             $table->rememberToken();
             $table->timestamps();

@@ -109,12 +109,21 @@ new class extends Component {
                     ->toArray();
 
                 $this->hasMore = count($this->results) >= 9; // tolerância
+                $this->lessCredit();
             } else {
                 throw new \Exception('Serper falhou: ' . $response->status() . ' - ' . $response->body());
             }
         } catch (\Exception $e) {
             $this->error = 'Erro na busca: ' . $e->getMessage();
         }
+    }
+
+    public function lessCredit() {
+        $user = Auth::user();
+        $user->credits = $user->credits - 1;
+        $user->credits_used = $user->credits_used + 1;
+        $user->save();
+        // dd($user->credits - 1);
     }
 
     private function extractRede($link)

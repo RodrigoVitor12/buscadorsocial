@@ -121,11 +121,11 @@
 
 
     {{-- Barra de uso --}}
-    @php
-        $total = auth()->user()->credits ?? 1;
-        $used = auth()->user()->credits_used ?? 0;
-        $percent = min(100, ($used / $total) * 100);
-    @endphp
+        @php
+            $total = max(1, auth()->user()->credits ?? 1);
+            $used = auth()->user()->credits_used ?? 0;
+            $percent = min(100, ($used / $total) * 100);
+        @endphp
 
     <div class="bg-[#111827] border border-white/10 p-6 rounded-xl mb-10">
 
@@ -158,7 +158,7 @@
             Faça upgrade do seu plano para continuar encontrando excursões.
         </p>
 
-        <a href="{{ route('plans') }}"
+        <a href="{{ route('plan.index') }}"
            class="inline-block mt-4 px-5 py-2 bg-yellow-500 text-black font-semibold rounded-lg">
             Ver planos
         </a>
