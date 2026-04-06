@@ -29,10 +29,17 @@ new class extends Component {
         <tr class="border-t border-gray-700 hover:bg-[#111315] transition">
             <td class="p-4">{{$user->name}}</td>
             <td class="p-4">{{$user->email}}</td>
+            <td class="p-4">{{$user->phone_number}}</td>
+            <td class="p-4">{{$user->daysToUse}}</td>
+            <td class="p-4">{{$user->plan}}</td>
+            <td class="p-4">{{$user->payment_status}}</td>
+            <td class="p-4">{{$user->credits}}</td>
             <td class="p-4">
-                @foreach ($user->ip_address as $ip)
-                    [{{ $ip }}] /
-                @endforeach
+                @if ($user->ip_address)
+                    @foreach ($user->ip_address as $ip)
+                        [{{ $ip }}] /
+                    @endforeach
+                @endif
             </td>
 
             <td class="p-4">
@@ -53,7 +60,7 @@ new class extends Component {
 
                 <!-- Edit IP -->
                 <a href="{{ route('admin.update-info-user', $user->id) }}" class="px-3 py-1 text-xs rounded-lg bg-gray-700 hover:bg-white hover:text-black transition">
-                    Alterar Plano
+                    Alterar Dados
                 </a>
 
                 <!-- Delete -->

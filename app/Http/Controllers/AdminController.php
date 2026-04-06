@@ -26,6 +26,13 @@ class AdminController extends Controller
     }
 
     public function update(Request $request) {
-        
+        $user = User::find($request->user_id);
+        $user->daysToUse = $request->daysToUse;
+        $user->credits = $request->credits;
+        $user->plan = $request->plan;
+        $user->payment_status = $request->payment_status;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Dados Atualizado com sucesso');
     }
 }
