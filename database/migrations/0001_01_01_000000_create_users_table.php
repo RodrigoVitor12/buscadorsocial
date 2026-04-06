@@ -15,11 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('cnpj');
+            $table->string('phone_number');
+            $table->string('daysToUse')->default('7');
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('ip_address')->nullable();
             $table->string('role')->default('1'); // 0 - Admin / 1 - User
-            $table->string('plano')->default('Starter'); 
-            $table->string('status')->default('inativo');
+            $table->string('plan'); 
+            $table->string('plan_price'); 
+            $table->string('status')->default('ativo');
+            $table->string('payment_status')->default('pendente');
             $table->integer('credits')->default(100);
             $table->timestamp('last_login')->useCurrent();
             $table->rememberToken();

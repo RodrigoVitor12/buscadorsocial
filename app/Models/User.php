@@ -24,10 +24,15 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'plano',
+        'plan',
+        'plan_price',
         'status',
         'last_login',
-        'credits'
+        'credits',
+        'phone_number',
+        'cnpj',
+        'daysToUse',
+        'ip_address'
     ];
     protected $casts = [
         'ip_address' => 'array',

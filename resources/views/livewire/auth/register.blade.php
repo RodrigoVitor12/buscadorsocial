@@ -28,7 +28,7 @@
 
     <p class="text-xs text-gray-500 mt-1">
         Após criar sua conta você receberá o link de pagamento.
-        A ativação ocorre em até <strong>24h</strong>.
+        A ativação ocorre em até <strong>24h. Enquanto isso você usará o plano Starter</strong>.
     </p>
 </div>
 
@@ -45,7 +45,15 @@
     autofocus
     placeholder="Hotel Exemplo"
 />
-
+<!-- CNPJ -->
+<flux:input
+    name="cnpj"
+    label="CNPJ"
+    :value="old('cnpj')"
+    type="text"
+    required
+    placeholder="00.000.000/0001-00"
+/>
 <!-- Email -->
 <flux:input
     name="email"
@@ -54,6 +62,15 @@
     type="email"
     required
     placeholder="contato@empresa.com"
+/>
+{{-- Telefone --}}
+<flux:input
+    name="phone"
+    label="Telefone / WhatsApp"
+    :value="old('phone')"
+    type="text"
+    required
+    placeholder="(11) 99999-9999"
 />
 
 <!-- Plano -->
