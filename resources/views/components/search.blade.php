@@ -56,66 +56,72 @@ new class extends Component {
 
     public function search()
     {
-        if (!$this->termo) {
+        $user = Auth::user();
+        if($user->credits > 0) {
+            if (!$this->termo) {
+                $this->results = [];
+                return;
+            }
+
+            $this->error = null;
             $this->results = [];
-            return;
-        }
 
-        $this->error = null;
-        $this->results = [];
+            try {
+                $start = ($this->page - 1) * 10;
 
-        try {
-            $start = ($this->page - 1) * 10;
+                // Construir query com OR para redes
+                $sites = $this->rede === 'todas'
+                    ? ['facebook.com', 'instagram.com', 'tiktok.com']
+                    : [$this->rede . '.com'];
 
-            // Construir query com OR para redes
-            $sites = $this->rede === 'todas'
-                ? ['facebook.com', 'instagram.com', 'tiktok.com']
-                : [$this->rede . '.com'];
+                $siteQuery = collect($sites)->map(fn($s) => "site:$s")->implode(' OR ');
 
-            $siteQuery = collect($sites)->map(fn($s) => "site:$s")->implode(' OR ');
+                // Adicionar localização se selecionado
+                $localQuery = '';
+                if ($this->selectedCidade && $this->selectedCidade !== 'Todas as cidades') {
+                    $localQuery = $this->selectedCidade . ' ' . $this->selectedEstado;
+                } elseif ($this->selectedEstado) {
+                    $localQuery = $this->selectedEstado;
+                }
 
-            // Adicionar localização se selecionado
-            $localQuery = '';
-            if ($this->selectedCidade && $this->selectedCidade !== 'Todas as cidades') {
-                $localQuery = $this->selectedCidade . ' ' . $this->selectedEstado;
-            } elseif ($this->selectedEstado) {
-                $localQuery = $this->selectedEstado;
+                $query = trim("{$this->termo} {$localQuery} ({$siteQuery})");
+
+                $response = Http::withHeaders([
+                    'X-API-KEY' => env('SERPER_API_KEY'),
+                    'Content-Type' => 'application/json',
+                ])->post('https://google.serper.dev/search', [
+                    'q'        => $query,
+                    'gl'       => 'br',
+                    'hl'       => 'pt',
+                    'location' => 'Brazil',
+                    'start'    => $start,
+                    'num'      => 10,
+                ]);
+
+                if ($response->successful()) {
+                    $data = $response->json();
+
+                    $this->results = collect($data['organic'] ?? [])
+                        ->map(fn($item) => [
+                            'titulo'    => $item['title']   ?? '',
+                            'descricao' => $item['snippet'] ?? '',
+                            'link'      => $item['link']    ?? '',
+                            'rede'      => $this->extractRede($item['link'] ?? ''),
+                        ])
+                        ->toArray();
+
+                    $this->hasMore = count($this->results) >= 9; // tolerância
+                    $this->lessCredit();
+                } else {
+                    throw new \Exception('Serper falhou: ' . $response->status() . ' - ' . $response->body());
+                }
+            } catch (\Exception $e) {
+                $this->error = 'Erro na busca: ' . $e->getMessage();
             }
-
-            $query = trim("{$this->termo} {$localQuery} ({$siteQuery})");
-
-            $response = Http::withHeaders([
-                'X-API-KEY' => env('SERPER_API_KEY'),
-                'Content-Type' => 'application/json',
-            ])->post('https://google.serper.dev/search', [
-                'q'        => $query,
-                'gl'       => 'br',
-                'hl'       => 'pt',
-                'location' => 'Brazil',
-                'start'    => $start,
-                'num'      => 10,
-            ]);
-
-            if ($response->successful()) {
-                $data = $response->json();
-
-                $this->results = collect($data['organic'] ?? [])
-                    ->map(fn($item) => [
-                        'titulo'    => $item['title']   ?? '',
-                        'descricao' => $item['snippet'] ?? '',
-                        'link'      => $item['link']    ?? '',
-                        'rede'      => $this->extractRede($item['link'] ?? ''),
-                    ])
-                    ->toArray();
-
-                $this->hasMore = count($this->results) >= 9; // tolerância
-                $this->lessCredit();
-            } else {
-                throw new \Exception('Serper falhou: ' . $response->status() . ' - ' . $response->body());
-            }
-        } catch (\Exception $e) {
-            $this->error = 'Erro na busca: ' . $e->getMessage();
+        } else {
+            session()->flash('error', 'Para continuar realizando pesquisas, adquira mais créditos ou faça upgrade do seu plano.');
         }
+        
     }
 
     public function lessCredit() {
@@ -184,6 +190,59 @@ new class extends Component {
                 <div class="w-6 h-6 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
         </div>
+
+        @if (session()->has('error'))
+        <div 
+            x-data="{ open: true }"
+            x-show="open"
+            class="fixed inset-0 flex  justify-center bg-black/60 z-50"
+        >
+
+            <div class="bg-[#1B1D22] text-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center border border-gray-700">
+
+                <!-- Ícone -->
+                <div class="flex justify-center mb-4">
+                    <div class="bg-red-500/20 text-red-400 rounded-full p-4">
+                        ⚠
+                    </div>
+                </div>
+
+                <!-- Título -->
+                <h2 class="text-xl font-semibold mb-2">
+                    Limite de pesquisas atingido
+                </h2>
+
+                <!-- Mensagem -->
+                <p>Você utilizou todos os créditos disponíveis no seu plano.</p>
+                <p class="text-gray-400 mb-6">
+                    {{ session('error') }}
+                </p>
+
+                <!-- Info créditos -->
+                <div class="bg-black/30 rounded-lg p-3 mb-6 text-sm">
+                    Créditos disponíveis: <strong>0</strong>
+                </div>
+
+                <!-- Botões -->
+                <div class="flex gap-3 justify-center">
+
+                    <a href="{{route('plan.index')}}"
+                    class="px-5 py-2 bg-yellow-500 text-black rounded-lg font-medium hover:opacity-90">
+                        Ver planos
+                    </a>
+
+                    <button 
+                        @click="open=false"
+                        class="px-5 py-2 bg-gray-700 rounded-lg hover:bg-gray-600">
+                        Fechar
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+        @endif
+        
 
         {{-- Filtros: Redes + Estado + Cidade --}}
         <div class="flex flex-wrap gap-3">
