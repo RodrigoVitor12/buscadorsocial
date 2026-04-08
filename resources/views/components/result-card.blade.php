@@ -38,23 +38,7 @@
 
     {{-- Link --}}
     <div class="flex justify-around">
-        <a href="{{$link}}"
-            target="_blank"
-            class="inline-flex items-center gap-1 
-                    text-amber-400 font-medium 
-                    hover:text-amber-300 transition-colors">
-                Acessar
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                    class="w-4 h-4" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor">
-                    <path stroke-linecap="round" 
-                        stroke-linejoin="round" 
-                        stroke-width="2" 
-                        d="M14 3h7m0 0v7m0-7L10 14" />
-                </svg>
-        </a>
+        <livewire:link-access :link="$link" :perfil="$perfil" :title="$title" :description="$description" wire:key="{{$description}}" />
 
         <livewire:favorite :profile="$perfil" :title="$title" :description="$description" :link="$link" />
     </div>
