@@ -4,6 +4,7 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class CardPlan extends Component
@@ -15,6 +16,8 @@ class CardPlan extends Component
     public $priceForSearch;
     public $benefits;
     public $results;
+    public $userPlan;
+    
     public function __construct($typePlan, $price, $credits, $daysToUse, $priceForSearch, $benefits = null, $results)
     {
         $this->typePlan = $typePlan;
@@ -24,6 +27,7 @@ class CardPlan extends Component
         $this->priceForSearch = $priceForSearch;
         $this->benefits = $benefits;
         $this->results = $results;
+        $this->userPlan = Auth::user()?->plan;
     }
 
     /**

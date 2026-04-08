@@ -10,6 +10,9 @@
     <h1 class="text-3xl font-bold text-white mb-8">
         Dashboard
     </h1>
+    @if (session('selected_plan'))
+        <livewire:button-change-plan />
+    @endif
 
 
     {{-- PLANO ATUAL --}}
@@ -27,7 +30,7 @@
                 <p class="text-gray-400 text-sm mt-2">
                     Status:
                     <span class="text-yellow-400 font-medium">
-                        {{ auth()->user()->payment_status == 'pendente' ? 'Aguardando pagamento' : 'pago' }}
+                        {{ ucfirst(auth()->user()->payment_status) }}
                     </span>
                 </p>
 
@@ -77,9 +80,17 @@
             <p class="text-xs text-gray-500 mt-3">
                 Após o pagamento, a ativação ocorre em até <strong>24h</strong>.
             </p>
+             <p class="text-xs text-gray-500 mt-3">
+                Para facilitar a confirmação do pagamento, na descrição do pagamento, informe o email da conta <strong>24h</strong>.
+            </p>
 
         </div>
 
+            @if (session('payment_status'))
+                {{session('payment_status')}}
+            @else
+            <livewire:button-confirm-payment />
+            @endif
         @endif
 
     </div>
