@@ -122,9 +122,9 @@
         </div>
 
         <div class="bg-[#111827] border border-white/10 p-6 rounded-xl">
-            <p class="text-gray-400 text-sm">Buscas realizadas</p>
+            <p class="text-gray-400 text-sm">Dias para uso</p>
             <p class="text-3xl font-bold text-white mt-2">
-                {{ auth()->user()->search_count ?? 0 }}
+                {{ (int) $user->days_remaining + 1}}
             </p>
         </div>
 

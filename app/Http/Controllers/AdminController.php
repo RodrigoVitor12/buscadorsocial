@@ -30,6 +30,7 @@ class AdminController extends Controller
         $user->daysToUse = $request->daysToUse;
         $user->credits = $request->credits;
         $user->plan = $request->plan;
+        $user->start_date = $request->start_date;
         $user->payment_status = $request->payment_status;
         $user->save();
 

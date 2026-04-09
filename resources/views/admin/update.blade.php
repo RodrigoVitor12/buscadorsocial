@@ -10,6 +10,15 @@
             <div>
                 <input type="hidden" name="user_id" value="{{$user->id}}" />
             </div>
+            <div>
+                <flux:input 
+                    type="date"
+                    name="start_date"
+                    label="Data"
+                    placeholder="Selecione uma data"
+                    value="{{ $user->start_date }}"
+                />
+            </div>
             <!-- Dias para uso -->
             <div>
                 <flux:input name="daysToUse" label="Dias de uso" :value="($user->daysToUse)" type="text" required autofocus

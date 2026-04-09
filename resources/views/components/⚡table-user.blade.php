@@ -2,12 +2,25 @@
 
 use Livewire\Component;
 use App\Models\User;
+use Carbon\Carbon;
 
 new class extends Component {
     public $users;
+    public $daysRemaining;
 
     public function mount($users) {
         $this->users = $users;
+        $this->users = $users->map(function ($user) {
+
+            $daysPassed = Carbon::parse($user->start_date)
+                ->diffInDays(now());
+
+            $daysRemaining = max($user->daysToUse - $daysPassed, 0);
+
+            $user->daysRemaining = $daysRemaining;
+
+            return $user;
+        });
     }
 
     public function handleActive ($id) {
@@ -30,7 +43,7 @@ new class extends Component {
             <td class="p-4">{{$user->name}}</td>
             <td class="p-4">{{$user->email}}</td>
             <td class="p-4">{{$user->phone_number}}</td>
-            <td class="p-4">{{$user->daysToUse}}</td>
+            <td class="p-4">{{ (int) $user->days_remaining + 1}}</td>
             <td class="p-4">{{$user->plan}}</td>
             <td class="p-4">{{$user->payment_status}}</td>
             <td class="p-4">{{$user->credits}}</td>

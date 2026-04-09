@@ -61,7 +61,8 @@ class CreateNewUser implements CreatesNewUsers
             'phone_number' => $input['phone'],
             'password' => $input['password'],
             'plan' => $input['plan'],
-            'plan_price' => $plan_price
+            'plan_price' => $plan_price,
+            'start_date' => now()
         ]);
     }
 }

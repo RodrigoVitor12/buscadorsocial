@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -32,7 +34,8 @@ class User extends Authenticatable
         'phone_number',
         'cnpj',
         'daysToUse',
-        'ip_address'
+        'ip_address',
+        'start_date'
     ];
     protected $casts = [
         'ip_address' => 'array',
@@ -81,5 +84,13 @@ class User extends Authenticatable
 
     public function clicks() {
         return $this->hasMany(Clicks::class);
+    }
+
+    public function getDaysRemainingAttribute()
+    {
+        $daysPassed = Carbon::parse($this->start_date)
+            ->diffInDays(now());
+
+        return max($this->daysToUse - $daysPassed, 0);
     }
 }
