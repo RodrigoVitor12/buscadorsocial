@@ -24,20 +24,20 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'contractor_name',
+        'cnpj',
+        'phone_number',
+        'full_address',
+        'neighborhood',
+        'city',
+        'state',
+        'postal_code',
         'password',
-        'role',
         'plan',
         'plan_price',
-        'status',
-        'last_login',
-        'credits',
-        'phone_number',
-        'cnpj',
-        'daysToUse',
-        'ip_address',
         'start_date'
     ];
-    protected $casts = [
+        protected $casts = [
         'ip_address' => 'array',
     ];
 

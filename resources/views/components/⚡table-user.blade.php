@@ -40,6 +40,7 @@ new class extends Component {
     <!-- USER -->
     @foreach ($users as $user)
         <tr class="border-t border-gray-700 hover:bg-[#111315] transition">
+            <td class="p-4">{{$user->contractor_name}}</td>
             <td class="p-4">{{$user->name}}</td>
             <td class="p-4">{{$user->email}}</td>
             <td class="p-4">{{$user->phone_number}}</td>

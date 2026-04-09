@@ -59,12 +59,18 @@ class CreateNewUser implements CreatesNewUsers
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
+            'contractor_name' => $input['contractor_name'],
             'cnpj' => $input['cnpj'],
-            'phone_number' => $input['phone'],
+            'phone_number' => $input['phone_number'],
+            'full_address' => $input['full_address'],
+            'neighborhood' => $input['neighborhood'],
+            'city' => $input['city'],
+            'state' => $input['state'],
+            'postal_code' => $input['postal_code'],
             'password' => $input['password'],
             'plan' => $input['plan'],
             'plan_price' => $plan_price,
             'start_date' => now()
         ]);
-    }
+        }
 }

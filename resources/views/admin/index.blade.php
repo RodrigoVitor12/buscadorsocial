@@ -48,13 +48,14 @@
             <thead class="bg-[#111315] text-gray-400">
                 <tr>
                     <th class="p-4 text-left">Nome</th>
+                    <th class="p-4 text-left">Empresa</th>
                     <th class="p-4 text-left">Email</th>
                     <th class="p-4 text-left">Telefone</th>
                     <th class="p-4 text-left">Dias de Uso</th>
                     <th class="p-4 text-left">Plano</th>
                     <th class="p-4 text-left">Status Pagamento</th>
                     <th class="p-4 text-left">Créditos</th>
-                    <th class="p-4 text-left">IP</th>
+                    {{-- <th class="p-4 text-left">IP</th> --}}
                     <th class="p-4 text-left">Status</th>
                     <th class="p-4 text-left">Ações</th>
                 </tr>
