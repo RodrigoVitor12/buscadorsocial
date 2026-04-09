@@ -53,6 +53,8 @@ class CreateNewUser implements CreatesNewUsers
                 $plan_price = '1500,00';
                 break;
         }
+        
+        session()->forget('selected_plan');
 
         return User::create([
             'name' => $input['name'],
