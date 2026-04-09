@@ -43,6 +43,7 @@
 
         @if (Route::has('register'))
             <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
+                <a href="{{route('password.request')}}">{{ __('Esqueci a senha') }}</a> <br>
                 <span>{{ __('Não tem uma conta?') }}</span>
                 <flux:link :href="route('register')" wire:navigate>{{ __('Criar conta') }}</flux:link>
             </div>
