@@ -26,6 +26,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         $plan_price = 0;
+        $docType = "";
 
         switch($input['plan']) {
             case 'Starter':
@@ -55,12 +56,17 @@ class CreateNewUser implements CreatesNewUsers
         }
         
         session()->forget('selected_plan');
+        if($input['cnpj']) {
+            $docType = $input['cnpj'];
+        } else {
+            $docType = $input['cpf'];
+        }
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'contractor_name' => $input['contractor_name'],
-            'cnpj' => $input['cnpj'],
+            'docType' => $docType,
             'phone_number' => $input['phone_number'],
             'full_address' => $input['full_address'],
             'neighborhood' => $input['neighborhood'],

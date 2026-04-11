@@ -25,7 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'contractor_name',
-        'cnpj',
+        'docType',
         'phone_number',
         'full_address',
         'neighborhood',

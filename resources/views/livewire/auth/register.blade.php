@@ -4,6 +4,7 @@
 x-data="{
     plan: '{{ old('plan', session('selected_plan')) }}',
     cep: '',
+    docType: 'cnpj',
     buscarCep() {
 
         let cepLimpo = this.cep.replace(/\D/g,'')
@@ -70,24 +71,53 @@ placeholder="Hotel Exemplo"
 
 <!-- Nome do responsável -->
 <flux:input
-name="contractor_name"
-label="Nome de quem está contratando"
-:value="old('contractor_name')"
-type="text"
-required
-placeholder="João Silva"
+    name="contractor_name"
+    label="Nome de quem está contratando"
+    :value="old('contractor_name')"
+    type="text"
+    required
+    placeholder="João Silva"
 />
 
+<div class="flex gap-4">
+
+    <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" value="cnpj" x-model="docType">
+        <span>CNPJ</span>
+    </label>
+
+    <label class="flex items-center gap-2 cursor-pointer">
+        <input type="radio" value="cpf" x-model="docType">
+        <span>CPF</span>
+    </label>
+
+</div>
+
 <!-- CNPJ -->
-<flux:input
-name="cnpj"
-label="CNPJ"
-:value="old('cnpj')"
-type="text"
-x-mask="99.999.999/9999-99"
-required
-placeholder="00.000.000/0001-00"
-/>
+<div x-show="docType == 'cnpj'">
+    <flux:input
+        name="cnpj"
+        label="CNPJ"
+        :value="old('cnpj')"
+        type="text"
+        x-mask="99.999.999/9999-99"
+        x-bind:required="docType === 'cnpj'"
+        placeholder="00.000.000/0001-00"
+    />
+</div>
+
+{{-- CPF --}}
+<div x-show="docType == 'cpf'">
+    <flux:input
+        name="cpf"
+        label="CPF"
+        :value="old('cpf')"
+        type="text"
+        x-mask="999.999.999-99"
+        x-bind:required="docType === 'cpf'"
+        placeholder="000.000.000-00"
+    />
+</div>
 
 <!-- Email -->
 <flux:input
