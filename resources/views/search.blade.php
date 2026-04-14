@@ -4,29 +4,6 @@
 
 @section('content')
 <div class="min-h-screen bg-background flex flex-col">
-
-    {{-- Boas-vindas --}}
-    @auth
-    <div class="text-center mt-8">
-        <p class="text-gray-300 text-lg">
-            👋 Olá, <span class="text-yellow-500 font-semibold">{{ auth()->user()->name }}</span>
-        </p>
-
-        <p class="text-gray-500 text-sm">
-            Pronto para encontrar novos parceiros turísticos?
-        </p>
-
-        {{-- Créditos --}}
-        <p class="text-gray-500 text-sm mt-2">
-            Créditos restantes:
-            <span class="text-yellow-500 font-semibold">
-                {{ auth()->user()->credits ?? 0}}
-            </span>
-        </p>
-    </div>
-    @endauth
-
-
     {{-- Main Content --}}
     <main class="flex-1 flex items-center justify-center px-4">
         <div class="w-full max-w-2xl py-20">
@@ -40,7 +17,7 @@
                 </h1>
 
                 <p class="text-gray-400 text-sm md:text-base max-w-md mx-auto">
-                    Descubra excursões, agências e parceiros turísticos nas redes sociais
+                    Descubra excursões, agências e parceiros turísticos na nossas redes de pesquisas
                 </p>
 
                 <p class="text-xs text-gray-500 mt-3">
