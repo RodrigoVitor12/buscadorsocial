@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/css/app.css')
 </head>
 <body class="bg-[#0b0f17] bg-[radial-gradient(circle_at_center,rgba(255,170,0,0.15)_0%,rgba(11,15,23,1)_60%)]">
-    @auth
-        {{-- Top Navbar --}}
-        {{-- Navbar --}}
-<header class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md">
+{{-- Navbar --}}
+<header x-data="{ open: false }" class="w-full border-b border-white/10 bg-black/40 backdrop-blur-md">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {{-- Logo --}}
@@ -22,72 +21,71 @@
             </div>
         </a>
 
-        {{-- Links --}}
-        <div class="flex items-center gap-6 text-sm">
+        {{-- Botão mobile --}}
+        <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+            ☰
+        </button>
 
-            {{-- PLANOS (para todos) --}}
-            <a href="{{ route('plan.index') }}" 
-               class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                Planos
-            </a>
+        {{-- Links desktop --}}
+        <div class="hidden md:flex items-center gap-6 text-sm">
 
+            <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>
 
-            {{-- USUÁRIO LOGADO --}}
             @auth
-
-                <a href="{{ route('dashboard') }}" 
-                   class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                    Dashboard
-                </a>
-
-                <a href="{{ route('search') }}" 
-                   class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                    Pesquisar
-                </a>
-
-                <a href="{{ route('favorite.index') }}" 
-                   class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                    Meus Favoritos
-                </a>
+                <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
+                <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
+                <a href="{{ route('favorite.index') }}" class="text-gray-300 hover:text-yellow-500">Favoritos</a>
 
                 @if (auth()->user()->role == '0')
-                    <a href="{{ route('admin') }}" 
-                       class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                        Admin
-                    </a>
+                    <a href="{{ route('admin') }}" class="text-gray-300 hover:text-yellow-500">Admin</a>
                 @endif
 
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit"
-                        class="px-4 py-2 rounded-lg bg-red-500/90 hover:bg-red-500 text-white transition-all duration-200 cursor-pointer">
-                        Sair
-                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-red-500 text-white">Sair</button>
                 </form>
-
             @endauth
 
-
-            {{-- USUÁRIO NÃO LOGADO --}}
             @guest
-
-                <a href="{{ route('login') }}" 
-                   class="text-gray-300 hover:text-yellow-500 transition-colors duration-200">
-                    Entrar
-                </a>
-
-                <a href="{{ route('register') }}"
-                   class="px-4 py-2 rounded-lg bg-yellow-500 text-gray-900 font-medium hover:opacity-90 transition">
-                    Criar conta
-                </a>
-
+                <a href="{{ route('login') }}" class="text-gray-300 hover:text-yellow-500">Entrar</a>
+                <a href="{{ route('register') }}" class="px-4 py-2 rounded-lg bg-yellow-500 text-gray-900">Criar conta</a>
             @endguest
 
         </div>
+    </div>
+
+    {{-- Menu mobile --}}
+    <div x-show="open" @click.outside="open = false"
+         class="md:hidden px-6 pb-4 flex flex-col gap-4 text-sm bg-black/80">
+
+        <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>
+
+        @auth
+            <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
+            <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
+            <a href="{{ route('favorite.index') }}" class="text-gray-300 hover:text-yellow-500">Favoritos</a>
+
+            @if (auth()->user()->role == '0')
+                <a href="{{ route('admin') }}" class="text-gray-300 hover:text-yellow-500">Admin</a>
+            @endif
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button class="w-full text-left px-4 py-2 rounded-lg bg-red-500 text-white">
+                    Sair
+                </button>
+            </form>
+        @endauth
+
+        @guest
+            <a href="{{ route('login') }}" class="text-gray-300 hover:text-yellow-500">Entrar</a>
+            <a href="{{ route('register') }}" class="px-4 py-2 rounded-lg bg-yellow-500 text-gray-900">
+                Criar conta
+            </a>
+        @endguest
 
     </div>
 </header>
-    @endauth
     <div>
         @yield('content')
     </div>
