@@ -24,12 +24,11 @@
         <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
             <span class="text-white">Hotéis encontram</span>
             <span class="text-yellow-500">excursões</span>
-            <span class="text-white">nas redes sociais</span>
+            <span class="text-white">em nossas pesquisas</span>
         </h1>
 
         <p class="text-gray-400 mb-10 text-lg">
-            Descubra grupos de viagem, romarias e excursões no Facebook e Instagram
-            que podem precisar de hospedagem.
+            Descubra grupos de viagem, romarias e excursões na nossa rede de pesquisas que possam precisar de hospedagem.
         </p>
 
         <a href="{{ route('register') }}"
@@ -53,7 +52,7 @@
         <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-[#181A1D] border border-gray-700">
             <h3 class="text-white font-semibold mb-2">Multi Plataforma</h3>
             <p class="text-gray-400 text-sm">
-                Resultados do Facebook e Instagram em um único lugar.
+                Resultados de Pesquisa eficientes.
             </p>
         </div>
 
@@ -79,7 +78,7 @@
             <div class="bg-[#181A1D] border border-gray-700 p-6 rounded-2xl">
                 <h3 class="text-white font-semibold mb-2">1. Pesquise</h3>
                 <p class="text-gray-400 text-sm">
-                    Digite algo como "Excursão e escolah o estado e a cidade que deseja encontrar".
+                    Digite algo como "Excursão e escolha o estado e a cidade que deseja encontrar".
                 </p>
             </div>
 
