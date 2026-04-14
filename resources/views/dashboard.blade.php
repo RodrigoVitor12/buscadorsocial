@@ -189,9 +189,9 @@
                         Nova busca
                     </a>
 
-                    <a href="{{ route('favorite.index') }}"
+                    <a href="{{ route('search.historyClick') }}"
                        class="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 rounded-xl text-center transition">
-                        Histórico
+                        Histórico de acesso
                     </a>
                     <a href="{{ route('favorite.index') }}"
                        class="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 rounded-xl text-center transition">

@@ -15,6 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/search', [SearchController::class, 'index'])->name('search');
     Route::get('/meus-favoritos', [FavoriteController::class, 'index'])->name('favorite.index');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/meus-clicks', [SearchController::class, 'historyClick'])->name('search.historyClick');
 });
 
 Route::middleware(['admin'])->group(function () {
