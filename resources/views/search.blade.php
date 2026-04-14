@@ -78,7 +78,7 @@
 
             {{-- Footer Note --}}
             <p class="text-center text-xs text-gray-500 mt-14 opacity-60">
-                Resultados encontrados em Facebook, Instagram e outras redes públicas
+                Resultados de Pesquisa eficientes.
             </p>
 
         </div>
