@@ -73,10 +73,16 @@
                         </div>
                     </div>
 
+                    
+                     @if (session('selected_plan'))
+                        <livewire:button-change-plan />
+
+                    @else
                     <a href="{{ route('plan.index') }}"
-                       class="px-6 py-3 bg-yellow-500 text-black font-semibold rounded-xl hover:bg-yellow-400 transition">
-                        Alterar plano
-                    </a>
+                                        class="px-6 py-3 bg-yellow-500 text-black font-semibold rounded-xl hover:bg-yellow-400 transition">
+                                            Alterar plano
+                                        </a>
+                    @endif
 
                 </div>
 

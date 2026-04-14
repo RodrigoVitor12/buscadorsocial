@@ -44,16 +44,18 @@ new class extends Component {
 
 <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 flex items-center justify-between mb-4 mt-4">
     @if (session('selected_plan'))
-        <p class="text-sm text-yellow-400">
-            Plano selecionado:
-            <span class="font-semibold text-yellow-300">
-                {{ session('selected_plan') }}
-            </span>
-        </p>
-
-        <button wire:click="changePlan" class="px-4 py-2 bg-yellow-500 text-black rounded-lg font-medium hover:bg-yellow-400 transition ">
-            Confirmar mudança
-        </button>
+        <div>
+            <p class="text-sm text-yellow-400">
+                Plano selecionado:
+                <span class="font-semibold text-yellow-300">
+                    {{ session('selected_plan') }}
+                </span>
+            </p>
+            
+                <button wire:click="changePlan" class="px-4 mt-4 py-2 bg-yellow-500 text-black rounded-lg font-medium hover:bg-yellow-400 transition ">
+                    Confirmar mudança
+                </button>
+        </div>
     @else
          <p class="text-sm text-yellow-400">Plano Alterado com Sucesso! Atualize a página</p>
     @endif
