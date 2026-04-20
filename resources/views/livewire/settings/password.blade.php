@@ -10,7 +10,7 @@
                 manter segura</span>
         </div>
         <form method="POST" wire:submit="updatePassword" class="mt-6 space-y-6">
-
+            @csrf
             <div>
                 <p class="text-gray-400">Senha Atual:</p>
                 <flux:input wire:model="current_password" class="mt-2" type="password" required

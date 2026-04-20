@@ -5,6 +5,7 @@
 
     <x-settings.layout :heading="__('Profile')" :subheading="__('Atualize seu nome e email')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
+            @csrf
             <span class="text-white">Nome:</span>
             <flux:input class="mt-2" wire:model="name" type="text" required autofocus autocomplete="name" />
 
