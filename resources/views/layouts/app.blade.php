@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
-    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- SEO básico -->
+    <title>@yield('title', 'Buscador Social')</title>
+    <meta name="description" content="@yield('description', 'Descubra o Buscador Social, a plataforma ideal para conectar pessoas e oportunidades.')">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph (Facebook, WhatsApp, etc) -->
+    <meta property="og:title" content="@yield('title', 'Buscador Social')">
+    <meta property="og:description" content="@yield('description', 'Plataforma para conectar pessoas e oportunidades.')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ asset('images/og-image.jpg') }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', 'Buscador Social')">
+    <meta name="twitter:description" content="@yield('description', 'Plataforma para conectar pessoas e oportunidades.')">
+    <meta name="twitter:image" content="{{ asset('images/twitter-image.jpg') }}">
+
+    <!-- Extras -->
+    <meta name="author" content="Buscador Social">
+    <meta name="theme-color" content="#0b0f17">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Alpine -->
+    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
+
+    <!-- CSS -->
     @vite('resources/css/app.css')
 </head>
 <body class="bg-[#0b0f17] bg-[radial-gradient(circle_at_center,rgba(255,170,0,0.15)_0%,rgba(11,15,23,1)_60%)]">
