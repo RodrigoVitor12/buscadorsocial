@@ -7,8 +7,10 @@
 
     {{-- HERO --}}
     <div class="text-center max-w-2xl mt-24 relative z-10">
-
-        <div class="inline-flex bg-[#322719] items-center justify-center w-20 h-20 rounded-3xl border border-yellow-500 mb-8">
+        <div class="flex justify-center">
+            <img src="/logo-head.png" alt="" class="w-14">
+        </div>
+        {{-- <div class="inline-flex bg-[#322719] items-center justify-center w-20 h-20 rounded-3xl border border-yellow-500 mb-8">
             <svg xmlns="http://www.w3.org/2000/svg"
                  class="w-10 h-10 text-yellow-500"
                  fill="none"
@@ -19,20 +21,20 @@
                       stroke-width="2"
                       d="M21 21l-4.35-4.35M10 18a8 8 0 100-16 8 8 0 000 16z"/>
             </svg>
-        </div>
+        </div> --}}
 
         <h1 class="font-display text-4xl md:text-5xl font-bold tracking-tight mb-6">
-            <span class="text-white">Hotéis encontram</span>
+            <span class="text-white">Encontre</span>
             <span class="text-yellow-500">excursões</span>
-            <span class="text-white">em nossas pesquisas</span>
+            <span class="text-white">e aumente as reservas do seu hotel</span>
         </h1>
 
         <p class="text-gray-400 mb-10 text-lg">
-            Descubra grupos de viagem, romarias e excursões na nossa rede de pesquisas que possam precisar de hospedagem.
+            Descubra grupos de viagem, romarias e excursões que precisam de hospedagem.
         </p>
 
         <a href="{{ route('register') }}"
-           class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-500 text-gray-900 font-medium text-sm hover:opacity-90 transition">
+           class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-yellow-500 text-gray-900 font-bold text-sm hover:opacity-90 transition">
             Começar grátis
         </a>
 

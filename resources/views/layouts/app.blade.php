@@ -33,7 +33,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- Alpine -->
-    {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
 
     <!-- CSS -->
     @vite('resources/css/app.css')
@@ -46,8 +46,7 @@
         {{-- Logo --}}
         <a href="{{ route('home') }}">
             <div class="flex items-center gap-2">
-                <span class="text-yellow-500 font-bold text-lg">Buscador</span>
-                <span class="text-white font-bold text-lg">Social</span>
+                <img src="/logo.png" alt="">
             </div>
         </a>
 
