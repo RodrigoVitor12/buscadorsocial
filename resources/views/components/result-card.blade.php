@@ -40,7 +40,7 @@
     <div class="flex justify-around">
         <livewire:link-access :link="$link" :perfil="$perfil" :title="$title" :description="$description" wire:key="{{$description}}" />
 
-        <livewire:favorite :profile="$perfil" :title="$title" :description="$description" :link="$link" />
+        <livewire:favorite :profile="$perfil" :title="$title" :description="$description" :link="$link" wire:key="{{$link}}" />
     </div>
 </div>
 
