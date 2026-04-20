@@ -1,41 +1,45 @@
-<section class="w-full">
+<section class="w-full!">
     @include('partials.settings-heading')
 
     <flux:heading class="sr-only">{{ __('Password Settings') }}</flux:heading>
 
-    <x-settings.layout :heading="__('Update password')" :subheading="__('Ensure your account is using a long, random password to stay secure')">
+    <x-settings.layout>
+        <div>
+            <p class="text-gray-400 font-bold">Atualize sua senha</p>
+            <span class="text-xs text-gray-400">Garanta que sua conta esteja usando uma senha longa e aleatória para se
+                manter segura</span>
+        </div>
         <form method="POST" wire:submit="updatePassword" class="mt-6 space-y-6">
-            <flux:input
-                wire:model="current_password"
-                :label="__('Current password')"
-                type="password"
-                required
-                autocomplete="current-password"
-            />
-            <flux:input
-                wire:model="password"
-                :label="__('New password')"
-                type="password"
-                required
-                autocomplete="new-password"
-            />
-            <flux:input
-                wire:model="password_confirmation"
-                :label="__('Confirm Password')"
-                type="password"
-                required
-                autocomplete="new-password"
-            />
+
+            <div>
+                <p class="text-gray-400">Senha Atual:</p>
+                <flux:input wire:model="current_password" class="mt-2" type="password" required
+                    autocomplete="current-password" />
+            </div>
+
+            <div>
+                <p class="text-gray-400">Nova Senha:</p>
+                <flux:input wire:model="password" class="mt-2" type="password" required autocomplete="new-password" />
+            </div>
+
+            <div>
+                <p class="text-gray-400">Confirmar Senha:</p>
+                <flux:input wire:model="password_confirmation" class="mt-2" type="password" required
+                    autocomplete="new-password" />
+            </div>
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
+                    <flux:button variant="primary" type="submit" class="w-full">
+                        {{ __('Save') }}
+                    </flux:button>
                 </div>
 
                 <x-action-message class="me-3" on="password-updated">
-                    {{ __('Saved.') }}
+                    {{ __('Salvar.') }}
                 </x-action-message>
             </div>
+
         </form>
     </x-settings.layout>
 </section>

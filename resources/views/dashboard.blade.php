@@ -197,6 +197,10 @@
                        class="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 rounded-xl text-center transition">
                         Meus Favoritos
                     </a>
+                    <a href="{{ route('profile.edit') }}"
+                       class="border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black py-3 rounded-xl text-center transition">
+                        Configurações de Perfil
+                    </a>
 
                 </div>
 

@@ -87,7 +87,8 @@
     </div>
 </header>
     <div>
-        @yield('content')
+         @yield('content')
+        {{ $slot ?? '' }}
     </div>
 </body>
 </html>
