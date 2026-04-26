@@ -63,6 +63,7 @@
             @auth
                 <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
                 <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
+                <a href="{{ route('leads.index') }}" class="text-gray-300 hover:text-yellow-500">Leads</a>
                 <a href="{{ route('favorite.index') }}" class="text-gray-300 hover:text-yellow-500">Favoritos</a>
 
                 @if (auth()->user()->role == '0')
@@ -92,6 +93,7 @@
         @auth
             <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
             <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
+            <a href="{{ route('leads.index') }}" class="text-gray-300 hover:text-yellow-500">Leads</a>
             <a href="{{ route('favorite.index') }}" class="text-gray-300 hover:text-yellow-500">Favoritos</a>
 
             @if (auth()->user()->role == '0')

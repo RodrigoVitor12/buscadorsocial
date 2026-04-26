@@ -15,9 +15,16 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->user()->role == '0') {
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->back();
+        }
+
+        if ($user->role != '0') {
             abort(403);
         }
+
         return $next($request);
     }
 }
