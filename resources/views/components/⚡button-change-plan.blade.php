@@ -10,25 +10,22 @@ new class extends Component {
                 $plan_price = '0,00';
                 break;
             case 'One':
-                $plan_price = '250,00';
+                $plan_price = '90,00';
                 break;
             case 'Two':
-                $plan_price = '500,00';
+                $plan_price = '160,00';
                 break;
             case 'Bronze':
-                $plan_price = '600,00';
+                $plan_price = '300,00';
                 break;
             case 'Prata':
-                $plan_price = '800,00';
+                $plan_price = '400,00';
                 break;
             case 'Ouro':
-                $plan_price = '990,00';
+                $plan_price = '700,00';
                 break;
             case 'Semestre Max':
-                $plan_price = '1250,00';
-                break;
-            case 'Full 12 Booster':
-                $plan_price = '1500,00';
+                $plan_price = '990,00';
                 break;
         }
         $user = Auth::user();
