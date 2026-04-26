@@ -10,8 +10,9 @@ class LeadController extends Controller
 {
     public function index () {
         $userCity = Auth::user()->city;
+        $leadsAdmin = Lead::all();
         $leads = Lead::where('to', $userCity)->get();
-        return view('leads.lead', ['leads' => $leads]);
+        return view('leads.lead', ['leads' => $leads, 'leadsAdmin' => $leadsAdmin]);
     }
 
     public function create() {
@@ -37,5 +38,12 @@ class LeadController extends Controller
         } else {
             return redirect()->back()->with('leadError', 'Erro 500, estamos com problema no servidor, desulpa o transtorno arrumaremos o quanto antes');
         }
+    }
+
+    public function delete($id) {
+        $lead = Lead::findOrFail($id); 
+        $lead->delete();// apaga do banco
+
+        return redirect()->back()->with('successDelete', 'Lead excluído com sucesso.');
     }
 }

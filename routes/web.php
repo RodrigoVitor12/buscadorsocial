@@ -26,6 +26,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admin/alterar-dados/', [AdminController::class, 'update'])->name('admin.update-info-user-post');
     Route::get('leads/create', [LeadController::class, 'create'])->name('leads.create');
     Route::post('leads/store', [LeadController::class, 'store'])->name('leads.store');
+    Route::post('leads/delete/{id}', [LeadController::class, 'delete'])->name('leads.delete');
 
 });
 
