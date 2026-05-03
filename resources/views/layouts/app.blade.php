@@ -57,9 +57,8 @@
 
         {{-- Links desktop --}}
         <div class="hidden md:flex items-center gap-6 text-sm">
-
-            <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>
-
+            <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>       
+            <a href="{{ route('faq') }}" class="text-gray-300 hover:text-yellow-500">Suporte</a>  
             @auth
                 <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
                 <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
@@ -74,9 +73,9 @@
                     @csrf
                     <button class="px-4 py-2 rounded-lg bg-red-500 text-white">Sair</button>
                 </form>
-            @endauth
-
+            @endauth     
             @guest
+               
                 <a href="{{ route('login') }}" class="text-gray-300 hover:text-yellow-500">Entrar</a>
                 <a href="{{ route('register') }}" class="px-4 py-2 rounded-lg bg-yellow-500 text-gray-900">Criar conta</a>
             @endguest
@@ -89,7 +88,7 @@
          class="md:hidden px-6 pb-4 flex flex-col gap-4 text-sm bg-black/80">
 
         <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>
-
+        <a href="{{ route('faq') }}" class="text-gray-300 hover:text-yellow-500">Suporte</a>
         @auth
             <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
             <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
@@ -107,7 +106,7 @@
                 </button>
             </form>
         @endauth
-
+            
         @guest
             <a href="{{ route('login') }}" class="text-gray-300 hover:text-yellow-500">Entrar</a>
             <a href="{{ route('register') }}" class="px-4 py-2 rounded-lg bg-yellow-500 text-gray-900">

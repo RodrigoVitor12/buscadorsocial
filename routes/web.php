@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 Route::get('/planos', [PlanController::class, 'index'])->name('plan.index');
 Route::get('/plan/{plan}', [PlanController::class, 'select'])->name('plan.select');
+Route::view('/suporte', 'faq')->name('faq');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/search', [SearchController::class, 'index'])->name('search');

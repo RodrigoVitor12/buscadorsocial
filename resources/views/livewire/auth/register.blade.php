@@ -5,8 +5,10 @@ x-data="{
     plan: '{{ old('plan', session('selected_plan')) }}',
     cep: '',
     docType: 'cnpj',
-    buscarCep() {
+    openTerms: false,
+    acceptedTerms: false,
 
+    buscarCep() {
         let cepLimpo = this.cep.replace(/\D/g,'')
 
         if(cepLimpo.length !== 8) return
@@ -106,7 +108,7 @@ placeholder="Hotel Exemplo"
     />
 </div>
 
-{{-- CPF --}}
+<!-- CPF -->
 <div x-show="docType == 'cpf'">
     <flux:input
         name="cpf"
@@ -203,7 +205,6 @@ label="Plano escolhido"
 x-model="plan"
 required
 >
-
 <option value="">Selecione um plano</option>
 <option value="Starter">Starter</option>
 <option value="One">One</option>
@@ -213,7 +214,6 @@ required
 <option value="Ouro">Ouro</option>
 <option value="Semestre Max">Semestre Max</option>
 <option value="Full 12 Booster">Full 12 Booster</option>
-
 </flux:select>
 
 <!-- Senha -->
@@ -236,16 +236,43 @@ placeholder="Confirme sua senha"
 viewable
 />
 
+<!-- TERMOS -->
+<div class="mt-2">
+    <label class="flex items-start gap-3 cursor-pointer text-sm text-gray-700">
+        <input 
+            type="checkbox" 
+            name="accepted_terms"
+            x-model="acceptedTerms"
+            required
+            class="mt-1 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500"
+        >
+
+        <span>
+            Li e aceito os 
+            <button 
+                type="button"
+                @click="openTerms = true"
+                class="text-yellow-700 underline font-semibold hover:text-yellow-800"
+            >
+                Termos de Uso e Contrato de Prestação de Serviços
+            </button>
+        </span>
+    </label>
+</div>
+
+<!-- BOTÃO -->
 <flux:button
 type="submit"
 variant="primary"
 class="w-full"
+x-bind:disabled="!acceptedTerms"
 >
 Criar conta
 </flux:button>
 
 </form>
 
+<!-- LOGIN -->
 <div class="text-center text-sm text-zinc-600 dark:text-zinc-400">
 Já possui conta?
 
@@ -253,6 +280,112 @@ Já possui conta?
 Entrar
 </flux:link>
 
+</div>
+
+<!-- MODAL TERMOS -->
+<div 
+    x-show="openTerms"
+    x-transition
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+    style="display:none;"
+>
+    <div class="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden">
+
+        <!-- HEADER -->
+        <div class="flex justify-between items-center border-b px-6 py-4 bg-yellow-50">
+            <h2 class="text-lg font-bold text-yellow-800">
+                BUSCADOR SOCIAL BRASIL - Termos de Uso
+            </h2>
+
+            <button 
+                type="button"
+                @click="openTerms = false"
+                class="text-gray-500 hover:text-red-500 text-2xl font-bold"
+            >
+                &times;
+            </button>
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="p-6 overflow-y-auto max-h-[70vh] text-sm text-gray-700 leading-relaxed space-y-4">
+
+            <h3 class="text-center font-bold text-lg">
+                BUSCADOR SOCIAL BRASIL<br>
+                CONTRATO DE PRESTAÇÃO DE SERVIÇOS E TERMOS DE USO
+            </h3>
+
+            <p class="text-center">
+                Licenciamento de Software de Busca Social Multiplataforma - Versão 1.5<br>
+                26 de abril de 2026
+            </p>
+
+            <p><strong>1. DAS PARTES</strong><br>
+            Rodrigo Vitor Simão Cunha, CONTRATADA, CNPJ nº 66225.206/0001-62, sediada em Santa Rita do Sapucaí/MG, e a CONTRATANTE cadastrada eletronicamente.</p>
+
+            <p><strong>2. OBJETO</strong><br>
+            Licença de uso do software Buscador Social Brasil com acesso inicial gratuito de 10 créditos para testes.</p>
+
+            <p><strong>3. PLANOS</strong></p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border text-sm">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border px-2 py-1">Plano</th>
+                            <th class="border px-2 py-1">Buscas</th>
+                            <th class="border px-2 py-1">Resultados</th>
+                            <th class="border px-2 py-1">Valor</th>
+                            <th class="border px-2 py-1">Prazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="border px-2 py-1">One</td><td class="border px-2 py-1">100</td><td class="border px-2 py-1">1.000</td><td class="border px-2 py-1">R$ 90,00</td><td class="border px-2 py-1">45 dias</td></tr>
+                        <tr><td class="border px-2 py-1">Two</td><td class="border px-2 py-1">200</td><td class="border px-2 py-1">2.000</td><td class="border px-2 py-1">R$ 160,00</td><td class="border px-2 py-1">60 dias</td></tr>
+                        <tr><td class="border px-2 py-1">Bronze</td><td class="border px-2 py-1">400</td><td class="border px-2 py-1">4.000</td><td class="border px-2 py-1">R$ 300,00</td><td class="border px-2 py-1">90 dias</td></tr>
+                        <tr><td class="border px-2 py-1">Prata</td><td class="border px-2 py-1">500</td><td class="border px-2 py-1">5.000</td><td class="border px-2 py-1">R$ 400,00</td><td class="border px-2 py-1">100 dias</td></tr>
+                        <tr><td class="border px-2 py-1">Ouro</td><td class="border px-2 py-1">900</td><td class="border px-2 py-1">9.000</td><td class="border px-2 py-1">R$ 700,00</td><td class="border px-2 py-1">120 dias</td></tr>
+                        <tr><td class="border px-2 py-1">Semestre Max</td><td class="border px-2 py-1">1.000</td><td class="border px-2 py-1">10.000</td><td class="border px-2 py-1">R$ 999,00</td><td class="border px-2 py-1">180 dias</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>4. DISPONIBILIDADE</strong><br>
+            Instabilidades externas podem ocorrer. Falhas internas ou APIs integradas geram reposição em dobro do tempo perdido.</p>
+
+            <p><strong>5. EXPIRAÇÃO</strong><br>
+            Créditos expiram conforme plano, com tolerância adicional de 30 dias para uso parcial.</p>
+
+            <p><strong>6. SEGURANÇA</strong><br>
+            Compartilhamento indevido pode resultar em banimento sem reembolso.</p>
+
+            <p><strong>7. LGPD</strong><br>
+            Uso baseado em legítimo interesse. A responsabilidade legal sobre uso comercial dos dados é da CONTRATANTE.</p>
+
+            <p><strong>8. ACEITE E FORO</strong><br>
+            Aceite digital possui validade jurídica plena.<br>
+            Foro: Santa Rita do Sapucaí/MG.</p>
+
+            <div class="text-center pt-6 border-t">
+                <p><strong>BUSCADOR SOCIAL BRASIL</strong></p>
+                <p>CONTRATANTE (VIA ACEITE DIGITAL)</p>
+                <p>Santa Rita do Sapucaí, MG - 26 de abril de 2026</p>
+                <p>DOCUMENTO REGISTRADO ELETRONICAMENTE</p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="border-t px-6 py-4 flex justify-end bg-gray-50">
+            <button
+                type="button"
+                @click="acceptedTerms = true; openTerms = false"
+                class="bg-yellow-600 hover:bg-yellow-700 text-white px-5 py-2 rounded-lg font-semibold"
+            >
+                Li e Aceito
+            </button>
+        </div>
+
+    </div>
 </div>
 
 </div>
