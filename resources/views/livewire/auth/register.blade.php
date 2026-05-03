@@ -339,7 +339,7 @@ Entrar
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td class="border px-2 py-1">One</td><td class="border px-2 py-1">100</td><td class="border px-2 py-1">1.000</td><td class="border px-2 py-1">R$ 90,00</td><td class="border px-2 py-1">45 dias</td></tr>
+                        <tr><td class="border px-2 py-1">One</td><td class="border px-2 py-1">100</td><td class="border px-2 py-1">1.000</td><td class="border px-2 py-1">R$ 90,00</td><td class="border px-2 py-1">30 dias</td></tr>
                         <tr><td class="border px-2 py-1">Two</td><td class="border px-2 py-1">200</td><td class="border px-2 py-1">2.000</td><td class="border px-2 py-1">R$ 160,00</td><td class="border px-2 py-1">60 dias</td></tr>
                         <tr><td class="border px-2 py-1">Bronze</td><td class="border px-2 py-1">400</td><td class="border px-2 py-1">4.000</td><td class="border px-2 py-1">R$ 300,00</td><td class="border px-2 py-1">90 dias</td></tr>
                         <tr><td class="border px-2 py-1">Prata</td><td class="border px-2 py-1">500</td><td class="border px-2 py-1">5.000</td><td class="border px-2 py-1">R$ 400,00</td><td class="border px-2 py-1">100 dias</td></tr>
