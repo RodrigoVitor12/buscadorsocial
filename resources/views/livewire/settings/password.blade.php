@@ -9,7 +9,7 @@
             <span class="text-xs text-gray-400">Garanta que sua conta esteja usando uma senha longa e aleatória para se
                 manter segura</span>
         </div>
-        <form method="POST" wire:submit="updatePassword" class="mt-6 space-y-6">
+        <form wire:submit="updatePassword" class="mt-6 space-y-6">
             @csrf
             <div>
                 <p class="text-gray-400">Senha Atual:</p>
@@ -41,5 +41,8 @@
             </div>
 
         </form>
+        @if (session('successPsw'))
+            <p class="p-2 bg-green-500 rounded-md mt-2 font-bold">{{session('successPsw')}}</p>
+        @endif
     </x-settings.layout>
 </section>

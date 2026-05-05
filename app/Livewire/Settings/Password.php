@@ -42,5 +42,7 @@ class Password extends Component
         $this->reset('current_password', 'password', 'password_confirmation');
 
         $this->dispatch('password-updated');
+
+        redirect()->back()->with('successPsw', 'Senha alterada com Sucesso');
     }
 }

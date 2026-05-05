@@ -46,7 +46,7 @@
         {{-- Logo --}}
         <a href="{{ route('home') }}">
             <div class="flex items-center gap-2">
-                <img src="/logo.png" alt="">
+                <img src="/logo.jpeg" class="w-37.5" alt="Buscador Social Logo">
             </div>
         </a>
 

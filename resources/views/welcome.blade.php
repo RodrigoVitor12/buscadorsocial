@@ -8,7 +8,7 @@
     {{-- HERO --}}
     <div class="text-center max-w-2xl mt-24 relative z-10">
         <div class="flex justify-center">
-            <img src="/logo-head.png" alt="" class="w-14">
+            <img src="/logo-dog.png" alt="Buscador Social Logo" class="w-50">
         </div>
         {{-- <div class="inline-flex bg-[#322719] items-center justify-center w-20 h-20 rounded-3xl border border-yellow-500 mb-8">
             <svg xmlns="http://www.w3.org/2000/svg"
