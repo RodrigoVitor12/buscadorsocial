@@ -59,6 +59,7 @@
         <div class="hidden md:flex items-center gap-6 text-sm">
             <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>       
             <a href="{{ route('faq') }}" class="text-gray-300 hover:text-yellow-500">Suporte</a>  
+            <a href="{{ route('blog.index') }}" class="text-gray-300 hover:text-yellow-500">Blog</a>  
             @auth
                 <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
                 <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>
@@ -89,6 +90,7 @@
 
         <a href="{{ route('plan.index') }}" class="text-gray-300 hover:text-yellow-500">Planos</a>
         <a href="{{ route('faq') }}" class="text-gray-300 hover:text-yellow-500">Suporte</a>
+        <a href="{{ route('blog.index') }}" class="text-gray-300 hover:text-yellow-500">Blog</a>  
         @auth
             <a href="{{ route('dashboard') }}" class="text-gray-300 hover:text-yellow-500">Dashboard</a>
             <a href="{{ route('search') }}" class="text-gray-300 hover:text-yellow-500">Pesquisar</a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\LeadController;
@@ -11,7 +12,13 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 Route::get('/planos', [PlanController::class, 'index'])->name('plan.index');
 Route::get('/plan/{plan}', [PlanController::class, 'select'])->name('plan.select');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/buscador-social-encontra-hospedes', [BlogController::class, 'findLeads'])->name('blog.findLeads');
+Route::get('/blog/economizar-otas-e-lotar-hotel', [BlogController::class, 'betterHotel'])->name('blog.betterHotel');
+Route::get('/blog/jornada-do-viajante-e-hoteleiro', [BlogController::class, 'journey'])->name('blog.journey');
+Route::get('/blog/atalho-inteligente-para-lotar-hotel', [BlogController::class, 'dica'])->name('blog.dica');
 Route::view('/suporte', 'faq')->name('faq');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/search', [SearchController::class, 'index'])->name('search');
