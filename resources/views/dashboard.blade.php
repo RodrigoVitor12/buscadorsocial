@@ -94,7 +94,7 @@
                 @if(auth()->user()->payment_status != 'Pago')
                 <div class="mt-6 bg-black/40 border border-white/10 rounded-xl p-4 flex items-center justify-between">
                     <span id="pixKey" class="text-sm text-white">
-                        66.225.206/0001-25
+                        66.225.206/0001-28
                     </span>
 
                     <button onclick="copyPix()" class="text-yellow-500 text-sm">
@@ -156,7 +156,7 @@
                 <div class="bg-[#111827] border border-white/10 p-6 rounded-xl">
                     <p class="text-gray-400 text-sm">Dias restantes</p>
                     <p class="text-2xl font-bold text-white mt-2">
-                        {{ (int) $user->days_remaining + 1}}
+                        {{ (int) $user->days_remaining}}
                     </p>
                 </div>
 

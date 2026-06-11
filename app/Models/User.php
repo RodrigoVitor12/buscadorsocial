@@ -91,6 +91,8 @@ class User extends Authenticatable
         $daysPassed = Carbon::parse($this->start_date)
             ->diffInDays(now());
 
-        return max($this->daysToUse - $daysPassed, 0);
+        $remaining = $this->daysToUse - $daysPassed;
+
+        return $remaining > 0 ? $remaining + 1 : 0;
     }
 }

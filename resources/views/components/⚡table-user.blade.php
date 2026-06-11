@@ -44,7 +44,7 @@ new class extends Component {
             <td class="p-4">{{$user->name}}</td>
             <td class="p-4">{{$user->email}}</td>
             <td class="p-4">{{$user->phone_number}}</td>
-            <td class="p-4">{{ (int) $user->days_remaining + 1}}</td>
+            <td class="p-4">{{ (int) $user->days_remaining}}</td>
             <td class="p-4">{{$user->plan}}</td>
             <td class="p-4">{{$user->payment_status}}</td>
             <td class="p-4">{{$user->credits}}</td>

@@ -57,7 +57,7 @@ new class extends Component {
     public function search()
     {
         $user = Auth::user();
-        if($user->credits > 0) {
+        if($user->credits > 0 && $user->days_remaining > 0) {
             if (!$this->termo) {
                 $this->results = [];
                 return;
@@ -119,7 +119,7 @@ new class extends Component {
                 $this->error = 'Erro na busca: ' . $e->getMessage();
             }
         } else {
-            session()->flash('error', 'Para continuar realizando pesquisas, adquira mais créditos ou faça upgrade do seu plano.');
+            session()->flash('error', 'Para continuar realizando pesquisas, faça upgrade do seu plano.');
         }
         
     }
@@ -213,14 +213,15 @@ new class extends Component {
                 </h2>
 
                 <!-- Mensagem -->
-                <p>Você utilizou todos os créditos disponíveis no seu plano.</p>
+                <p>Você utilizou todos os créditos disponíveis no seu plano ou seus dias de uso terminaram.</p>
                 <p class="text-gray-400 mb-6">
                     {{ session('error') }}
                 </p>
 
                 <!-- Info créditos -->
                 <div class="bg-black/30 rounded-lg p-3 mb-6 text-sm">
-                    Créditos disponíveis: <strong>0</strong>
+                    Créditos disponíveis: <strong>{{auth()->user()->credits}}</strong> <br>
+                    Dias restante para uso: <strong>{{auth()->user()->days_remaining}}</strong>
                 </div>
 
                 <!-- Botões -->
